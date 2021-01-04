@@ -25,11 +25,12 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Copying files to server
-        uses: appleboy/scp-action@master
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          host: ${{ secrets.HOST }}
+          server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          rm: true
-          source: "public/"
-          target: "${{ secrets.DIR }}"
+          port: ${{ secrets.PORT }} 
+          local-dir: "public/"
+          server-dir: "${{ secrets.DIR }}"
+          dry-run: true
