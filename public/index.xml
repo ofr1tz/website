@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oliver Fritz</title>
+    <link>/</link>
+    <description>Recent content on Oliver Fritz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sat, 02 Jan 2021 17:18:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kigali 1994 City Map</title>
+      <link>/portfolio/kigali-1994/</link>
+      <pubDate>Sat, 02 Jan 2021 17:18:00 +0000</pubDate>
+      
+      <guid>/portfolio/kigali-1994/</guid>
+      <description>(Open Full Page Map)
+I found this beautifully simple 1994 map of Kigali at the Perry-Castañeda Library Map Collection of the University of Texas Library and decided to use it as an overlay in an interactive map with current satellite imagery. The map was originally provided by the US Defense Mapping Agency and was intended for military and humanitarian use only. Given the date of its production, one can assume that it was meant to facilitate orientation in Kigali in the event of a (military and/or humanitarian) intervention.</description>
+    </item>
+    
+    <item>
+      <title>Hello, world!</title>
+      <link>/portfolio/hello-world/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/hello-world/</guid>
+      <description>This website is new. I’ve been pondering on its creation for a while now. The start of the new year 2021 seems to be a good moment to finally launch it.
+The website needs a nice “Hello, World!” article and a favicon. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.</description>
+    </item>
+    
+  </channel>
+</rss>
