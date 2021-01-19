@@ -112,7 +112,7 @@
 
 
 <p>This website is new. I’ve been pondering on its creation for a while now. The start of the new year 2021 seems to be a good moment to finally launch it.</p>
-<p>The website needs a nice “Hello, World!” article and a <a href="https://en.wikipedia.org/wiki/Favicon">favicon</a>. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.</p>
+<p>The website needs a nice “Hello, World!” article and a <a href="https://en.wikipedia.org/wiki/Favicon" target="_blank">favicon</a>. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.</p>
 <p>I use <em>rnaturalearth</em> to acquire country features, <em>ggplot2</em> from <em>tidyverse</em> and <em>sf</em> for visualisation and <em>rmapshaper</em> to simplify the polygon according to the small size of the desired icon. <em>ggpubr</em> provides a simple way to use transparent backgrounds in <em>ggplot2</em>.</p>
 <pre class="r"><code>require(rnaturalearth)
 require(tidyverse)
@@ -122,7 +122,7 @@ require(ggpubr)</code></pre>
 <p>Here’s how I get the country features and simplify them:</p>
 <pre class="r"><code>countries &lt;- ne_countries(returnclass = &quot;sf&quot;) %&gt;%
     ms_simplify()</code></pre>
-<p>For the globe shaped visualisation, I choose an orthographic projection with parameters that allow showing relatively much of the Earth’s landmass, including my current home base. (Sorry, <a href="https://www.reddit.com/r/MapsWithoutNZ/">New Zealand</a>!)</p>
+<p>For the globe shaped visualisation, I choose an orthographic projection with parameters that allow showing relatively much of the Earth’s landmass, including my current home base. (Sorry, <a href="https://www.reddit.com/r/MapsWithoutNZ/" target="_blank">New Zealand</a>)!</p>
 <pre class="r"><code>lat &lt;- 45
 lon &lt;- -10
 ortho &lt;- paste0(
@@ -138,7 +138,7 @@ ortho &lt;- paste0(
     theme_void() + 
     theme_transparent()</code></pre>
 <p><img src="/portfolio/hello-world_files/figure-html/plot-1.png" width="672" /></p>
-<p>Now I can save the plot in various sizes according to the needs of different browsers. Note the use of <em>cairo-png</em> with the <em>png</em> graphics device. This enables <a href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing">antialiasing</a> and results in smoother polygon edges of the scaled icon.</p>
+<p>Now I can save the plot in various sizes according to the needs of different browsers. Note the use of <em>cairo-png</em> with the <em>png</em> graphics device. This enables <a href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing" target="_blank">antialiasing</a> and results in smoother polygon edges of the scaled icon.</p>
 <pre class="r"><code>ggsave(favicon192.png&quot;, width = 2, height = 2, dpi = 96, bg = &quot;transparent&quot;, type = &quot;cairo-png&quot;)</code></pre>
 <p>Voilà!</p>
 

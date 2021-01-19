@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This website is new. I've been pondering on its creation for a while now. The start of the new year 2021 seems to be a good moment to finally launch it.
 
-The website needs a nice "Hello, World!" article and a [favicon][1]. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.
+The website needs a nice "Hello, World!" article and a [favicon](https://en.wikipedia.org/wiki/Favicon){target="_blank"}. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.
 
 I use *rnaturalearth* to acquire country features, *ggplot2* from *tidyverse* and *sf* for visualisation and *rmapshaper* to simplify the polygon according to the small size of the desired icon. *ggpubr* provides a simple way to use transparent backgrounds in *ggplot2*.
 
@@ -35,7 +35,7 @@ countries <- ne_countries(returnclass = "sf") %>%
     ms_simplify()
 ```
 
-For the globe shaped visualisation, I choose an orthographic projection with parameters that allow showing relatively much of the Earth's landmass, including my current home base. (Sorry, [New Zealand][2]!)
+For the globe shaped visualisation, I choose an orthographic projection with parameters that allow showing relatively much of the Earth's landmass, including my current home base. (Sorry, [New Zealand](https://www.reddit.com/r/MapsWithoutNZ/){target="_blank"})!
 
 ```{r proj, message = F, warning = F}
 lat <- 45
@@ -58,14 +58,10 @@ countries %>%
     theme_transparent()
 ```
 
-Now I can save the plot in various sizes according to the needs of different browsers. Note the use of *cairo-png* with the *png* graphics device. This enables [antialiasing][3] and results in smoother polygon edges of the scaled icon. 
+Now I can save the plot in various sizes according to the needs of different browsers. Note the use of *cairo-png* with the *png* graphics device. This enables [antialiasing](https://en.wikipedia.org/wiki/Spatial_anti-aliasing){target="_blank"} and results in smoother polygon edges of the scaled icon. 
 
 ```{r save, eval = F}
 ggsave(favicon192.png", width = 2, height = 2, dpi = 96, bg = "transparent", type = "cairo-png")
 ```
 
 Voilà!
-
-[1]: https://en.wikipedia.org/wiki/Favicon
-[2]: https://www.reddit.com/r/MapsWithoutNZ/
-[3]: https://en.wikipedia.org/wiki/Spatial_anti-aliasing
