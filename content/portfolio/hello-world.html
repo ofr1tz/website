@@ -10,6 +10,7 @@ Description: A world globe favicon made for this website with ggplot2.
 weight: 1
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <p>This website is new. I’ve been pondering on its creation for a while now. The start of the new year 2021 seems to be a good moment to finally launch it.</p>
@@ -40,5 +41,5 @@ ortho &lt;- paste0(
     theme_transparent()</code></pre>
 <p><img src="/portfolio/hello-world_files/figure-html/plot-1.png" width="672" /></p>
 <p>Now I can save the plot in various sizes according to the needs of different browsers. Note the use of <em>cairo-png</em> with the <em>png</em> graphics device. This enables <a href="https://en.wikipedia.org/wiki/Spatial_anti-aliasing" target="_blank">antialiasing</a> and results in smoother polygon edges of the scaled icon.</p>
-<pre class="r"><code>ggsave(favicon192.png&quot;, width = 2, height = 2, dpi = 96, bg = &quot;transparent&quot;, type = &quot;cairo-png&quot;)</code></pre>
+<pre class="r"><code>ggsave(&quot;favicon192.png&quot;, width = 2, height = 2, dpi = 96, bg = &quot;transparent&quot;, type = &quot;cairo-png&quot;)</code></pre>
 <p>Voilà!</p>

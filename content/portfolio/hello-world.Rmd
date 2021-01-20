@@ -61,7 +61,7 @@ countries %>%
 Now I can save the plot in various sizes according to the needs of different browsers. Note the use of *cairo-png* with the *png* graphics device. This enables [antialiasing](https://en.wikipedia.org/wiki/Spatial_anti-aliasing){target="_blank"} and results in smoother polygon edges of the scaled icon. 
 
 ```{r save, eval = F}
-ggsave(favicon192.png", width = 2, height = 2, dpi = 96, bg = "transparent", type = "cairo-png")
+ggsave("favicon192.png", width = 2, height = 2, dpi = 96, bg = "transparent", type = "cairo-png")
 ```
 
 Voilà!
