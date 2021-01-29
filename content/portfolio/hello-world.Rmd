@@ -24,6 +24,7 @@ I use *rnaturalearth* to acquire country features, *ggplot2* from *tidyverse* an
 require(rnaturalearth)
 require(tidyverse)
 require(sf)
+require(glue)
 require(rmapshaper)
 require(ggpubr)
 ```
@@ -40,10 +41,9 @@ For the globe shaped visualisation, I choose an orthographic projection with par
 ```{r proj, message = F, warning = F}
 lat <- 45
 lon <- -10
-ortho <- paste0(
-    "+proj=ortho +lat_0=", lat, 
-    " +lon_0=", lon, 
-    " +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs"
+ortho <- glue(
+    "+proj=ortho +lat_0={lat} +lon_0={lon} ",
+    "+x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs"
 )
 ```
 
