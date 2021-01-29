@@ -6,7 +6,17 @@
     <description>Recent content in Portfolios on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sat, 02 Jan 2021 17:18:00 +0000</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>COVID-19 Community Mobility Reports</title>
+      <link>/portfolio/covid-19-community-mobility/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/covid-19-community-mobility/</guid>
+      <description>(Open Full Page App)
+When Google first published its community mobility reports in 2020, I – like many others – rushed to try and do something with it. I decided to use it as a pretext to build a Shiny app with time controls on a Leaflet map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the animate argument for the sliderInput.</description>
+    </item>
+    
     <item>
       <title>Kigali 1994 City Map</title>
       <link>/portfolio/kigali-1994/</link>

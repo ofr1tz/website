@@ -1,0 +1,28 @@
+---
+title: COVID-19 Community Mobility Reports
+author: Oliver Fritz
+date: '2021-01-29'
+draft: no
+image: img/portfolio/covid-19-community-mobility/covid-19-community-mobility.png
+showonlyimage: no
+slug: covid-19-community-mobility
+Description: Visualising changes in mobility from Google's dataset with Shiny
+  and Leaflet.
+weight: 1
+---
+
+<iframe title = "COVID-19 Community Mobility Reports App" src = "https://shiny.oliverfritz.de/covid-19-community-mobility/" width = "100%" height = "800"></iframe>
+
+<a href="https://shiny.oliverfritz.de/covid-19-community-mobility/" target="_blank">(Open Full Page App)</a>
+
+When Google first published its [community mobility reports](https://www.google.com/covid19/mobility/){target="_blank"} in 2020, I -- like many others -- rushed to try and do something with it. I decided to use it as a pretext to build a [Shiny](https://shiny.rstudio.com/){target="_blank"} app with time controls on a  [Leaflet](https://leafletjs.com/){target="_blank"} map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the `animate` argument for the `sliderInput`.[^1]
+
+Even if you are -- quite understandably -- no longer much inclined to spend your precious time on COVID-19 data yet again, this dataset provides insight that often goes beyond the impact of the pandemic, e.g.:
+
+- Quite obviously, the *Parks* layer is a nice indicator of good weather conditions, but it also clearly illustrates the distinction between a strict curfew imposed and a soft lockdown -- leaving little else to do but to take a walk in the park; 
+- Mobile internet blackouts, such as in the aftermath of the [Belarusian presidential election](https://en.wikipedia.org/wiki/2020_Belarusian_presidential_election){target="_blank"} on August 10, 2020 or around the [Ugandan general election](https://en.wikipedia.org/wiki/2021_Ugandan_general_election){target="_blank"} on January 14, 2021, are clearly visible in the data as "decreased mobility";
+- It's also easy to spot national holidays in the *Retail and Recreation* Layer.
+
+
+
+[^1]: If you're interested, you'll find all the code on [Github](https://github.com/ofr1tz/covid-19-community-mobility){target="_blank"}.
