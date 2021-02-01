@@ -11,7 +11,7 @@ Description: Visualising changes in mobility from Google's dataset with Shiny
 weight: 1
 ---
 
-<iframe title = "COVID-19 Community Mobility Reports App" src = "https://shiny.oliverfritz.de/covid-19-community-mobility/" width = "100%" height = "800"></iframe>
+<iframe title = "COVID-19 Community Mobility Reports App" src = "https://shiny.oliverfritz.de/covid-19-community-mobility/" width = "100%" height = "600"></iframe>
 
 <a href="https://shiny.oliverfritz.de/covid-19-community-mobility/" target="_blank">(Open Full Page App)</a>
 
