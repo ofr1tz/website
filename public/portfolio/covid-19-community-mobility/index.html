@@ -122,6 +122,40 @@
 <li>Mobile internet blackouts, such as in the aftermath of the <a href="https://en.wikipedia.org/wiki/2020_Belarusian_presidential_election" target="_blank">Belarusian presidential election</a> on August 10, 2020 or around the <a href="https://en.wikipedia.org/wiki/2021_Ugandan_general_election" target="_blank">Ugandan general election</a> on January 14, 2021, are clearly visible in the data as “decreased mobility”;</li>
 <li>It’s also easy to spot national holidays in the <em>Retail and Recreation</em> Layer.</li>
 </ul>
+<p>The following R script loads and processes the data set:</p>
+<pre class="r"><code>require(tidyverse)
+
+# source shared variables used by update_data cron job and app
+source(&quot;shared_vars.R&quot;)
+
+if(!dir.exists(&quot;data&quot;)) { dir.create(&quot;data&quot;) }
+
+temp &lt;- try(read_csv(url), silent = T)
+if(class(temp) != &quot;try-error&quot;) {
+    temp %&gt;%
+        filter(is.na(sub_region_1)) %&gt;%
+        rename(iso_a2 = country_region_code, country = country_region) %&gt;%
+        select(-sub_region_1, -sub_region_2, -metro_area) %&gt;%
+        gather(&quot;category&quot;, &quot;mobility&quot;, -iso_a2, -country, -iso_3166_2_code, -census_fips_code, -date) %&gt;%
+        mutate(
+            category = str_to_title(
+                str_replace_all(str_replace(category, &quot;_percent_change_from_baseline&quot;, &quot;&quot;), &quot;_&quot;, &quot; &quot;)
+            ),
+            bin = cut(
+                mobility, 
+                breaks = c(seq(-100, 100, 20), Inf), 
+                labels = labels, 
+                right = F
+            )
+        ) %&gt;%
+        saveRDS(file)
+}</code></pre>
+<p>I used <a href="https://github.com/bnosac/cronR" target="_blank"><em>cronR</em></a> to create a cron job for the daily execution of this script:</p>
+<pre class="r"><code>require(cronR)
+
+r &lt;- cron_rscript(&quot;update_data.R&quot;, workdir = here::here())
+cron_add(r, frequency = &quot;daily&quot;, at = &quot;18:30&quot;, description = &quot;update data&quot;)</code></pre>
+<p>In this way, the app can show the most recent data and still fire up without too much delay.</p>
 <div class="footnotes">
 <hr />
 <ol>
