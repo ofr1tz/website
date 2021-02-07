@@ -17,47 +17,13 @@ weight: 1
 <iframe title="COVID-19 Community Mobility Reports App" src="https://shiny.oliverfritz.de/covid-19-community-mobility/" width="100%" height="600">
 </iframe>
 <p><a href="https://shiny.oliverfritz.de/covid-19-community-mobility/" target="_blank">(Open Full Page App)</a></p>
-<p>When Google first published its <a href="https://www.google.com/covid19/mobility/" target="_blank">community mobility reports</a> in 2020, I – like many others – rushed to try and do something with it. I decided to use it as a pretext to build a <a href="https://shiny.rstudio.com/" target="_blank">Shiny</a> app with time controls on a <a href="https://leafletjs.com/" target="_blank">Leaflet</a> map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the <code>animate</code> argument for the <code>sliderInput</code>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>When Google first published its <a href="https://www.google.com/covid19/mobility/" target="_blank">community mobility reports</a> in 2020, I – like many others – rushed to try and do something with it. I decided to use it as a pretext to build a <a href="https://shiny.rstudio.com/" target="_blank">Shiny</a> app with time controls on a <a href="https://leafletjs.com/" target="_blank">Leaflet</a> map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the <code>animate</code> argument for the <code>sliderInput</code>. I used <a href="https://github.com/bnosac/cronR" target="_blank"><em>cronR</em></a> to create a cron job for the daily execution a script that loads and processes the data. In this way, the app can show the most recent data and still fire up without too much delay.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>Even if you are – quite understandably – no longer much inclined to spend your precious time on COVID-19 data yet again, this dataset provides insight that often goes beyond the impact of the pandemic, e.g.:</p>
 <ul>
 <li>Quite obviously, the <em>Parks</em> layer is a nice indicator of good weather conditions, but it also clearly illustrates the distinction between a strict curfew imposed and a soft lockdown – leaving little else to do but to take a walk in the park;</li>
 <li>Mobile internet blackouts, such as in the aftermath of the <a href="https://en.wikipedia.org/wiki/2020_Belarusian_presidential_election" target="_blank">Belarusian presidential election</a> on August 10, 2020 or around the <a href="https://en.wikipedia.org/wiki/2021_Ugandan_general_election" target="_blank">Ugandan general election</a> on January 14, 2021, are clearly visible in the data as “decreased mobility”;</li>
 <li>It’s also easy to spot national holidays in the <em>Retail and Recreation</em> Layer.</li>
 </ul>
-<p>The following R script loads and processes the data set:</p>
-<pre class="r"><code>require(tidyverse)
-
-# source shared variables used by update_data cron job and app
-source(&quot;shared_vars.R&quot;)
-
-if(!dir.exists(&quot;data&quot;)) { dir.create(&quot;data&quot;) }
-
-temp &lt;- try(read_csv(url), silent = T)
-if(class(temp) != &quot;try-error&quot;) {
-    temp %&gt;%
-        filter(is.na(sub_region_1)) %&gt;%
-        rename(iso_a2 = country_region_code, country = country_region) %&gt;%
-        select(-sub_region_1, -sub_region_2, -metro_area) %&gt;%
-        gather(&quot;category&quot;, &quot;mobility&quot;, -iso_a2, -country, -iso_3166_2_code, -census_fips_code, -date) %&gt;%
-        mutate(
-            category = str_to_title(
-                str_replace_all(str_replace(category, &quot;_percent_change_from_baseline&quot;, &quot;&quot;), &quot;_&quot;, &quot; &quot;)
-            ),
-            bin = cut(
-                mobility, 
-                breaks = c(seq(-100, 100, 20), Inf), 
-                labels = labels, 
-                right = F
-            )
-        ) %&gt;%
-        saveRDS(file)
-}</code></pre>
-<p>I used <a href="https://github.com/bnosac/cronR" target="_blank"><em>cronR</em></a> to create a cron job for the daily execution of this script:</p>
-<pre class="r"><code>require(cronR)
-
-r &lt;- cron_rscript(&quot;update_data.R&quot;, workdir = here::here())
-cron_add(r, frequency = &quot;daily&quot;, at = &quot;18:30&quot;, description = &quot;update data&quot;)</code></pre>
-<p>In this way, the app can show the most recent data and still fire up without too much delay.</p>
 <div class="footnotes">
 <hr />
 <ol>

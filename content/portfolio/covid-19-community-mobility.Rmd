@@ -15,56 +15,12 @@ weight: 1
 
 <a href="https://shiny.oliverfritz.de/covid-19-community-mobility/" target="_blank">(Open Full Page App)</a>
 
-When Google first published its [community mobility reports](https://www.google.com/covid19/mobility/){target="_blank"} in 2020, I -- like many others -- rushed to try and do something with it. I decided to use it as a pretext to build a [Shiny](https://shiny.rstudio.com/){target="_blank"} app with time controls on a  [Leaflet](https://leafletjs.com/){target="_blank"} map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the `animate` argument for the `sliderInput`.[^1]
+When Google first published its [community mobility reports](https://www.google.com/covid19/mobility/){target="_blank"} in 2020, I -- like many others -- rushed to try and do something with it. I decided to use it as a pretext to build a [Shiny](https://shiny.rstudio.com/){target="_blank"} app with time controls on a  [Leaflet](https://leafletjs.com/){target="_blank"} map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the `animate` argument for the `sliderInput`. I used [*cronR*](https://github.com/bnosac/cronR){target="_blank"} to create a cron job for the daily execution a script that loads and processes the data. In this way, the app can show the most recent data and still fire up without too much delay.[^1]
 
 Even if you are -- quite understandably -- no longer much inclined to spend your precious time on COVID-19 data yet again, this dataset provides insight that often goes beyond the impact of the pandemic, e.g.:
 
 - Quite obviously, the *Parks* layer is a nice indicator of good weather conditions, but it also clearly illustrates the distinction between a strict curfew imposed and a soft lockdown -- leaving little else to do but to take a walk in the park; 
 - Mobile internet blackouts, such as in the aftermath of the [Belarusian presidential election](https://en.wikipedia.org/wiki/2020_Belarusian_presidential_election){target="_blank"} on August 10, 2020 or around the [Ugandan general election](https://en.wikipedia.org/wiki/2021_Ugandan_general_election){target="_blank"} on January 14, 2021, are clearly visible in the data as "decreased mobility";
 - It's also easy to spot national holidays in the *Retail and Recreation* Layer.
-
-The following R script loads and processes the data set:
-
-```{r update, eval = FALSE}
-require(tidyverse)
-
-# source shared variables used by update_data cron job and app
-source("shared_vars.R")
-
-if(!dir.exists("data")) { dir.create("data") }
-
-temp <- try(read_csv(url), silent = T)
-if(class(temp) != "try-error") {
-	temp %>%
-		filter(is.na(sub_region_1)) %>%
-		rename(iso_a2 = country_region_code, country = country_region) %>%
-		select(-sub_region_1, -sub_region_2, -metro_area) %>%
-		gather("category", "mobility", -iso_a2, -country, -iso_3166_2_code, -census_fips_code, -date) %>%
-		mutate(
-			category = str_to_title(
-				str_replace_all(str_replace(category, "_percent_change_from_baseline", ""), "_", " ")
-			),
-			bin = cut(
-				mobility, 
-				breaks = c(seq(-100, 100, 20), Inf), 
-				labels = labels, 
-				right = F
-			)
-		) %>%
-		saveRDS(file)
-}
-```
-
-I used [*cronR*](https://github.com/bnosac/cronR){target="_blank"} to create a cron job for the daily execution of this script:
-
-```{r cron, eval = FALSE}
-require(cronR)
-
-r <- cron_rscript("update_data.R", workdir = here::here())
-cron_add(r, frequency = "daily", at = "18:30", description = "update data")
-```
-
-In this way, the app can show the most recent data and still fire up without too much delay.
-
 
 [^1]: If you're interested, you'll find all the code on [Github](https://github.com/ofr1tz/covid-19-community-mobility){target="_blank"}.

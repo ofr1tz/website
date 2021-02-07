@@ -6,7 +6,18 @@
     <description>Recent content in Portfolios on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>History of OSM buildings in Kigali</title>
+      <link>/portfolio/osm-building-history-kigali/</link>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/osm-building-history-kigali/</guid>
+      <description>(Open Full Page Map)
+Thanks to ohsome API and mapview, very little code is needed to make a web map visualising the evolution of building features in Kigali City on OpenStreetMap (OSM). The httr package provides convenient ways of sending POST requests.
+require(tidyverse)require(sf)require(rnaturalearth)require(geojsonsf)require(httr)require(janitor)require(mapview)require(leaflet)A bounding polygon of Kigali City can be easily acquired from Natural Earth using rnaturalearth. It is converted to GeoJSON format for the ohsome API query with geojsonsf.</description>
+    </item>
+    
     <item>
       <title>COVID-19 Community Mobility Reports</title>
       <link>/portfolio/covid-19-community-mobility/</link>

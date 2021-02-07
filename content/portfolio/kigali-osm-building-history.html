@@ -1,0 +1,66 @@
+---
+title: History of OSM buildings in Kigali
+author: Oliver Fritz
+date: '2021-02-07'
+draft: no
+image: img/portfolio/kigali-osm-building-history/kigali-osm-building-history.png
+showonlyimage: no
+slug: osm-building-history-kigali
+Description: Just a few lines of R code to make an interactive map of Kigali's building
+  feature history on OpenStreetMap using the ohsome API.
+weight: 1
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<!-- substitute with weblink-->
+<iframe src="https://maps.oliverfritz.de/kigali-osm-building-history/" width="100%" height="600">
+</iframe>
+<p><a href="https://maps.oliverfritz.de/kigali-osm-building-history/" target="_blank">(Open Full Page Map)</a></p>
+<p>Thanks to <a href="https://heigit.org/de/big-spatial-data-analytics/ohsome-3/" target="_blank">ohsome API</a> and <a href="https://r-spatial.github.io/mapview/" target="_blank">mapview</a>, very little code is needed to make a web map visualising the evolution of building features in Kigali City on <a href="https://www.openstreetmap.org/relation/1708283#map=12/-1.9296/30.1297" target="_blank">OpenStreetMap</a> (OSM). The <a href="https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html" target="_blank">httr</a> package provides convenient ways of sending POST requests.</p>
+<pre class="r"><code>require(tidyverse)
+require(sf)
+require(rnaturalearth)
+require(geojsonsf)
+require(httr)
+require(janitor)
+require(mapview)
+require(leaflet)</code></pre>
+<p>A bounding polygon of Kigali City can be easily acquired from <a href="https://www.naturalearthdata.com/" target="_blank">Natural Earth</a> using <a href="https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html" target="_blank">rnaturalearth</a>. It is converted to <a href="https://geojson.org/" target="_blank">GeoJSON</a> format for the ohsome API query with <a href="https://github.com/SymbolixAU/geojsonsf" target="_blank">geojsonsf</a>.</p>
+<pre class="r"><code>bpoly &lt;- ne_states(country = &quot;Rwanda&quot;, returnclass = &quot;sf&quot;) %&gt;%
+    filter(name == &quot;Kigali City&quot;) %&gt;%
+    sf_geojson(digits = 5)</code></pre>
+<p>Now a <a href="https://docs.ohsome.org/ohsome-api/v1/endpoints.html#extraction-endpoints" target="_blank">data extraction</a> query for yearly snapshots of building features within the boundaries of Kigali City can be posted to ohsome API.</p>
+<pre class="r"><code>response &lt;- POST(
+    url = &quot;https://api.ohsome.org/v1/elements/geometry&quot;,
+    encode = &quot;form&quot;,
+    body = list(
+        bpolys = bpoly,
+        filter = &quot;building=* and geometry:polygon&quot;,
+        time = &quot;2007-12-31/2020-12-31/P1Y&quot;
+    )
+)</code></pre>
+<p>And here is the processing chain from the response to the web map: The binary response is converted first to GeoJSON text, then to <a href="https://r-spatial.github.io/sf/articles/sf1.html" target="_blank">simple features</a> format. I decided to retain only building features that still existed in 2020, and selected the chronologically first version of each feature. The result is passed to mapview.</p>
+<pre class="r"><code>map &lt;- response$content %&gt;%
+    rawToChar() %&gt;%
+    geojson_sf() %&gt;%
+    clean_names() %&gt;%
+    mutate(year = as.factor(str_sub(snapshot_timestamp, 1, 4))) %&gt;%
+    group_by(osm_id) %&gt;%
+    filter(any(year == 2020)) %&gt;%
+    top_n(-1, wt = year) %&gt;%
+    ungroup() %&gt;%
+    mapview(
+        zcol = &quot;year&quot;, lwd = 0, 
+        layer.name = &quot;Feature Creation Year&quot;, 
+        map.types = &quot;CartoDB.DarkMatter&quot;
+    )</code></pre>
+<p>All that’s left to do is tweaking the map a bit with <a href="https://rstudio.github.io/leaflet/" target="_blank">leaflet</a> for proper attribution and a nice initial view, and then grab and publish it.</p>
+<pre class="r"><code>map@map %&gt;% 
+    setView(lng = 30.09, lat = -1.95, zoom = 14) %&gt;%
+    addTiles(
+        urlTemplate = &quot;&quot;, 
+        attribution = &#39;Made with &lt;a href=&quot;https://docs.ohsome.org/ohsome-api/v1/&quot; target=&quot;_blank&quot;&gt;ohsome API&lt;/a&gt;&#39;
+    ) %&gt;%
+    mapshot(url = here::here(&quot;../maps/kigali-osm-building-history/index.html&quot;))</code></pre>
