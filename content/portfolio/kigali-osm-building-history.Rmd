@@ -76,7 +76,7 @@ map <- response$content %>%
 
 All that's left to do is tweaking the map a bit with [leaflet](https://rstudio.github.io/leaflet/){target="_blank"} for proper attribution and a nice initial view, and then grab and publish it.
 
-```{r mapshot, eval = F}
+```{r mapshot}
 map@map %>% 
     setView(lng = 30.09, lat = -1.95, zoom = 14) %>%
     addTiles(
@@ -85,6 +85,7 @@ map@map %>%
     ) %>%
     mapshot(
         url = here::here("../maps/kigali-osm-building-history/index.html"),
-        title = "Kigali OSM building history"
+        title = "Kigali OSM building history",
+        selfcontained = F
     )
 ```
