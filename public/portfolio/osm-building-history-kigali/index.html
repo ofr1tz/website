@@ -2,7 +2,7 @@
 <html lang="en-uk">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Oliver Fritz | History of OSM buildings in Kigali</title> 
+<title>Oliver Fritz | History of OSM Building Features in Kigali</title> 
 <meta name="description" content="Spatial Data Science projects">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -107,7 +107,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>History of OSM buildings in Kigali</h1>
+         <h1>History of OSM Building Features in Kigali</h1>
          
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
@@ -161,7 +161,10 @@ require(leaflet)</code></pre>
         urlTemplate = &quot;&quot;, 
         attribution = &#39;Made with &lt;a href=&quot;https://docs.ohsome.org/ohsome-api/v1/&quot; target=&quot;_blank&quot;&gt;ohsome API&lt;/a&gt;&#39;
     ) %&gt;%
-    mapshot(url = here::here(&quot;../maps/kigali-osm-building-history/index.html&quot;))</code></pre>
+    mapshot(
+        url = here::here(&quot;../maps/kigali-osm-building-history/index.html&quot;),
+        title = &quot;Kigali OSM building history&quot;
+    )</code></pre>
 
          
       </div>

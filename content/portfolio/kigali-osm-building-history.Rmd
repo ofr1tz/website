@@ -1,5 +1,5 @@
 ---
-title: History of OSM buildings in Kigali
+title: History of OSM Building Features in Kigali
 author: Oliver Fritz
 date: '2021-02-07'
 draft: no
@@ -83,5 +83,8 @@ map@map %>%
         urlTemplate = "", 
         attribution = 'Made with <a href="https://docs.ohsome.org/ohsome-api/v1/" target="_blank">ohsome API</a>'
     ) %>%
-    mapshot(url = here::here("../maps/kigali-osm-building-history/index.html"))
+    mapshot(
+        url = here::here("../maps/kigali-osm-building-history/index.html"),
+        title = "Kigali OSM building history"
+    )
 ```
