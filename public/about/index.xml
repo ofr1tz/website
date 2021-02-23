@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About me on Oliver Fritz</title>
-    <link>/about/</link>
+    <link>https://www.oliverfritz.de/about/</link>
     <description>Recent content in About me on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 01 Jan 2021 12:00:00 +0000</lastBuildDate><atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jan 2021 12:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/about/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

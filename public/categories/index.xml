@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Oliver Fritz</title>
-    <link>/categories/</link>
+    <link>https://www.oliverfritz.de/categories/</link>
     <description>Recent content in Categories on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-uk</language><atom:link href="https://www.oliverfritz.de/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

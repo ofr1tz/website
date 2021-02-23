@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portfolios on Oliver Fritz</title>
-    <link>/portfolio/</link>
+    <link>https://www.oliverfritz.de/portfolio/</link>
     <description>Recent content in Portfolios on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>History of OSM Building Features in Kigali</title>
-      <link>/portfolio/osm-building-history-kigali/</link>
+      <link>https://www.oliverfritz.de/portfolio/osm-building-history-kigali/</link>
       <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/osm-building-history-kigali/</guid>
+      <guid>https://www.oliverfritz.de/portfolio/osm-building-history-kigali/</guid>
       <description>(Open Full Page Map)
 Thanks to ohsome API and mapview, very little code is needed to make a web map visualising the evolution of building features in Kigali City on OpenStreetMap (OSM). The httr package provides convenient ways of sending POST requests.
 require(tidyverse)require(sf)require(rnaturalearth)require(geojsonsf)require(httr)require(janitor)require(mapview)require(leaflet)A bounding polygon of Kigali City can be easily acquired from Natural Earth using rnaturalearth. It is converted to GeoJSON format for the ohsome API query with geojsonsf.</description>
@@ -20,30 +20,30 @@ require(tidyverse)require(sf)require(rnaturalearth)require(geojsonsf)require
     
     <item>
       <title>COVID-19 Community Mobility Reports</title>
-      <link>/portfolio/covid-19-community-mobility/</link>
+      <link>https://www.oliverfritz.de/portfolio/covid-19-community-mobility/</link>
       <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/covid-19-community-mobility/</guid>
+      <guid>https://www.oliverfritz.de/portfolio/covid-19-community-mobility/</guid>
       <description>(Open Full Page App)
 When Google first published its community mobility reports in 2020, I – like many others – rushed to try and do something with it. I decided to use it as a pretext to build a Shiny app with time controls on a Leaflet map. I was surprised how easy it was to implement a time series animation with Shiny by simply setting the animate argument for the sliderInput.</description>
     </item>
     
     <item>
       <title>Kigali 1994 City Map</title>
-      <link>/portfolio/kigali-1994/</link>
+      <link>https://www.oliverfritz.de/portfolio/kigali-1994/</link>
       <pubDate>Sat, 02 Jan 2021 17:18:00 +0000</pubDate>
       
-      <guid>/portfolio/kigali-1994/</guid>
+      <guid>https://www.oliverfritz.de/portfolio/kigali-1994/</guid>
       <description>(Open Full Page Map)
 I found this beautifully simple 1994 map of Kigali at the Perry-Castañeda Library Map Collection of the University of Texas Library and decided to use it as an overlay in an interactive map with current satellite imagery. The map was originally provided by the US Defense Mapping Agency and was intended for military and humanitarian use only. Given the date of its production, one can assume that it was meant to facilitate orientation in Kigali in the event of a (military and/or humanitarian) intervention.</description>
     </item>
     
     <item>
       <title>Hello, world!</title>
-      <link>/portfolio/hello-world/</link>
+      <link>https://www.oliverfritz.de/portfolio/hello-world/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/portfolio/hello-world/</guid>
+      <guid>https://www.oliverfritz.de/portfolio/hello-world/</guid>
       <description>This website is new. I’ve been pondering on its creation for a while now. The start of the new year 2021 seems to be a good moment to finally launch it.
 The website needs a nice “Hello, World!” article and a favicon. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.</description>
     </item>
