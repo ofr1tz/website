@@ -1,0 +1,21 @@
+---
+title: Introducing pickPop
+author: Oliver Fritz
+date: '2021-02-27'
+draft: no
+image: img/portfolio/pickpop/pickpop.png
+showonlyimage: no
+slug: pickpop
+Description: Discover the number of people living within a radius around any point on Earth.
+weight: 1
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<iframe src="https://shiny.oliverfritz.de/pickpop/" width="100%" height="600">
+</iframe>
+<p><a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">(Open Full Page App)</a></p>
+<p>I recently found out about <em><a href="https://github.com/isciences/exactextract" target="_blank">exactextract</a></em> (and its R wrapper <em><a href="https://github.com/isciences/exactextractr" target="_blank">exactextractR</a></em>). This is a tool for the extraction of zonal statistics from raster data, and it’s pure magic – it is incredibly fast and more accurate than other algorithms, as it considers partial coverage of pixels by polygons and weights the pixel values accordingly when aggregating them.</p>
+<p>Another interesting tool that I always wanted to try out is <em><a href="https://www.rplumber.io/" target="_blank">plumber</a></em>, an R package to easily create an API. So why not bring these tools together? I built a plumber <a href="https://github.com/ofr1tz/plumber-api" target="_blank">API</a> for a function that extracts zonal statistics from <a href="https://www.worldpop.org/geodata/listing?id=64" target="_blank">WorldPop population counts</a>, based on a geographic point coordinates and a buffer radius in meter. The geodesic buffer is created with <em><a href="https://github.com/valentinitnelav/geobuffer" target="_blank">geobuffer</a></em> – just another excellent tool that I discovered recently.</p>
+<p>I wrote a little <a href="https://github.com/ofr1tz/pickpop" target="_blank">Shiny app</a> to interact with the API and to display the results on a <a href="https://leafletjs.com/" target="_blank">Leaflet</a> map. Meet <a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">pickPop</a>!</p>

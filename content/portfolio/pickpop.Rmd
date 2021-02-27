@@ -1,0 +1,25 @@
+---
+title: Introducing pickPop
+author: Oliver Fritz
+date: '2021-02-27'
+draft: no
+image: img/portfolio/pickpop/pickpop.png
+showonlyimage: no
+slug: pickpop
+Description: Discover the number of people living within a radius around any point on Earth.
+weight: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+<iframe src = "https://shiny.oliverfritz.de/pickpop/" width = "100%" height = "600"></iframe>
+
+<a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">(Open Full Page App)</a>
+
+I recently found out about *[exactextract](https://github.com/isciences/exactextract){target="_blank"}* (and its R wrapper *[exactextractR](https://github.com/isciences/exactextractr){target="_blank"}*). This is a tool for the extraction of zonal statistics from raster data, and it's pure magic -- it is incredibly fast and more accurate than other algorithms, as it considers partial coverage of pixels by polygons and weights the pixel values accordingly when aggregating them.
+
+Another interesting tool that I always wanted to try out is *[plumber](https://www.rplumber.io/){target="_blank"}*, an R package to easily create an API. So why not bring these tools together? I built a plumber [API](https://github.com/ofr1tz/plumber-api){target="_blank"} for a function that extracts zonal statistics from [WorldPop population counts](https://www.worldpop.org/geodata/listing?id=64){target="_blank"}, based on a geographic point coordinates and a buffer radius in meter. The geodesic buffer is created with *[geobuffer](https://github.com/valentinitnelav/geobuffer){target="_blank"}* -- just another excellent tool that I discovered recently.
+
+I wrote a little [Shiny app](https://github.com/ofr1tz/pickpop){target="_blank"} to interact with the API and to display the results on a [Leaflet](https://leafletjs.com/){target="_blank"} map. Meet [pickPop](https://shiny.oliverfritz.de/pickpop/){target="_blank"}!

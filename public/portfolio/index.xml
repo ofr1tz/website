@@ -6,7 +6,18 @@
     <description>Recent content in Portfolios on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing pickPop</title>
+      <link>https://www.oliverfritz.de/portfolio/pickpop/</link>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.oliverfritz.de/portfolio/pickpop/</guid>
+      <description>(Open Full Page App)
+I recently found out about exactextract (and its R wrapper exactextractR). This is a tool for the extraction of zonal statistics from raster data, and it’s pure magic – it is incredibly fast and more accurate than other algorithms, as it considers partial coverage of pixels by polygons and weights the pixel values accordingly when aggregating them.
+Another interesting tool that I always wanted to try out is plumber, an R package to easily create an API.</description>
+    </item>
+    
     <item>
       <title>History of OSM Building Features in Kigali</title>
       <link>https://www.oliverfritz.de/portfolio/osm-building-history-kigali/</link>

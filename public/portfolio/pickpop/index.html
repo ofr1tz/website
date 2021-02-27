@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-uk">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Oliver Fritz | Introducing pickPop</title> 
+<meta name="description" content="Spatial Data Science projects">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/owl.carousel.css">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/owl.theme.css">
+
+
+  <link href="https://www.oliverfritz.de/css/style.green.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://www.oliverfritz.de/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://www.oliverfritz.de/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    
+    <a href="https://www.oliverfritz.de/"><img src="/img/ofritz.png" width = "200" class="portrait"></a>
+    
+    <h1 class="sidebar-heading"><br><a href="https://www.oliverfritz.de/">Oliver Fritz</a></h1>
+    
+      <p class="sidebar-p">Hi there.</p>
+    
+      <p class="sidebar-p">This website features some little projects in GIS and (spatial) data science.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://www.oliverfritz.de/portfolio/">Portfolio</a></li>
+      
+        <li><a href="https://www.oliverfritz.de/about/">About</a></li>
+      
+        <li><a href="https://www.oliverfritz.de/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/ofr1tz" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:website@oliverfritz.de" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/ofr1tz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2021 Oliver Fritz
+        
+        <br>Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to <a href="https://gohugo.io/">Hugo</a> by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+        <br><br><br>
+        <a href="/impressum/index.html">Impressum (German)</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://www.oliverfritz.de/">Oliver Fritz</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Introducing pickPop</h1>
+         
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<iframe src="https://shiny.oliverfritz.de/pickpop/" width="100%" height="600">
+</iframe>
+<p><a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">(Open Full Page App)</a></p>
+<p>I recently found out about <em><a href="https://github.com/isciences/exactextract" target="_blank">exactextract</a></em> (and its R wrapper <em><a href="https://github.com/isciences/exactextractr" target="_blank">exactextractR</a></em>). This is a tool for the extraction of zonal statistics from raster data, and it’s pure magic – it is incredibly fast and more accurate than other algorithms, as it considers partial coverage of pixels by polygons and weights the pixel values accordingly when aggregating them.</p>
+<p>Another interesting tool that I always wanted to try out is <em><a href="https://www.rplumber.io/" target="_blank">plumber</a></em>, an R package to easily create an API. So why not bring these tools together? I built a plumber <a href="https://github.com/ofr1tz/plumber-api" target="_blank">API</a> for a function that extracts zonal statistics from <a href="https://www.worldpop.org/geodata/listing?id=64" target="_blank">WorldPop population counts</a>, based on a geographic point coordinates and a buffer radius in meter. The geodesic buffer is created with <em><a href="https://github.com/valentinitnelav/geobuffer" target="_blank">geobuffer</a></em> – just another excellent tool that I discovered recently.</p>
+<p>I wrote a little <a href="https://github.com/ofr1tz/pickpop" target="_blank">Shiny app</a> to interact with the API and to display the results on a <a href="https://leafletjs.com/" target="_blank">Leaflet</a> map. Meet <a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">pickPop</a>!</p>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://www.oliverfritz.de/js/jquery.min.js"></script>
+<script src="https://www.oliverfritz.de/js/bootstrap.min.js"></script>
+<script src="https://www.oliverfritz.de/js/jquery.cookie.js"> </script>
+<script src="https://www.oliverfritz.de/js/ekko-lightbox.js"></script>
+<script src="https://www.oliverfritz.de/js/jquery.scrollTo.min.js"></script>
+<script src="https://www.oliverfritz.de/js/masonry.pkgd.min.js"></script>
+<script src="https://www.oliverfritz.de/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://www.oliverfritz.de/js/owl.carousel.min.js"></script>
+<script src="https://www.oliverfritz.de/js/front.js"></script>
+
+
+<script src="https://www.oliverfritz.de/js/math-code.js"></script>
+<script async src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
