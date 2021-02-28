@@ -1,0 +1,94 @@
+---
+title: History of OSM Building Features in Kigali
+author: Oliver Fritz
+date: '2021-02-07'
+draft: no
+image: img/portfolio/kigali-osm-building-history/kigali-osm-building-history.png
+showonlyimage: no
+slug: osm-building-history-kigali
+Description: Just a few lines of R code to make an interactive map of Kigali's building
+  feature history on OpenStreetMap using the ohsome API.
+weight: 1
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+<div style="position: relative">
+<div class="sk-pulse sk-pos"></div>
+<iframe src = "https://maps.oliverfritz.de/kigali-osm-building-history/" width="100%" height="600" style="position:relative;z-index:2"></iframe>
+</div>
+
+<a href="https://maps.oliverfritz.de/kigali-osm-building-history/" target="_blank">(Open Full Page Map)</a>
+
+Thanks to [ohsome API](https://heigit.org/de/big-spatial-data-analytics/ohsome-3/){target="_blank"} and [mapview](https://r-spatial.github.io/mapview/){target="_blank"}, very little code is needed to make a web map visualising the evolution of building features in Kigali City on [OpenStreetMap](https://www.openstreetmap.org/relation/1708283#map=12/-1.9296/30.1297){target="_blank"} (OSM). 
+
+```{r prerequisites}
+require(tidyverse)
+require(sf)
+require(rnaturalearth)
+require(geojsonsf)
+require(httr)
+require(janitor)
+require(mapview)
+require(leaflet)
+```
+
+A bounding polygon of Kigali City can be easily acquired from [Natural Earth](https://www.naturalearthdata.com/){target="_blank"} using [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html){target="_blank"}. It is converted to [GeoJSON](https://geojson.org/){target="_blank"} format for the ohsome API query with [geojsonsf](https://github.com/SymbolixAU/geojsonsf){target="_blank"}.
+
+```{r kigali}
+bpoly <- ne_states(country = "Rwanda", returnclass = "sf") %>%
+    filter(name == "Kigali City") %>%
+    sf_geojson(digits = 5)
+```
+
+Now a [data extraction](https://docs.ohsome.org/ohsome-api/v1/endpoints.html#extraction-endpoints){target="_blank"} query for yearly snapshots of building features within the boundaries of Kigali City can be posted to ohsome API. The [httr](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html){target="_blank"} package allows sending POST requests conventiently.
+
+```{r ohsome}
+response <- POST(
+	url = "https://api.ohsome.org/v1/elements/geometry",
+	encode = "form",
+	body = list(
+		bpolys = bpoly,
+		filter = "building=* and geometry:polygon",
+		time = "2007-12-31/2020-12-31/P1Y"
+	)
+)
+```
+
+The API's binary response is converted first to GeoJSON text, then to [simple features](https://r-spatial.github.io/sf/articles/sf1.html){target="_blank"} format. I decided to retain only building features that still existed in 2020, and selected the chronologically first version of each feature. The result is passed to mapview. 
+
+```{r processing} 
+map <- response$content %>%
+    rawToChar() %>%
+    geojson_sf() %>%
+    clean_names() %>%
+    mutate(year = as.factor(str_sub(snapshot_timestamp, 1, 4))) %>%
+    group_by(osm_id) %>%
+    filter(any(year == 2020)) %>%
+    top_n(-1, wt = year) %>%
+    ungroup() %>%
+    mapview(
+        zcol = "year", lwd = 0, 
+        layer.name = "Feature Creation Year", 
+        map.types = "CartoDB.DarkMatter"
+    )
+```
+
+All that's left to do is tweaking the map a bit with [leaflet](https://rstudio.github.io/leaflet/){target="_blank"} for proper attribution and a nice initial view, and then grab and publish it.
+
+```{r mapshot}
+map@map %>% 
+    setView(lng = 30.09, lat = -1.95, zoom = 14) %>%
+    addTiles(
+        urlTemplate = "", 
+        attribution = 'Made with <a href="https://docs.ohsome.org/ohsome-api/v1/" target="_blank">ohsome API</a>'
+    ) %>%
+    mapshot(
+        url = here::here("../maps/kigali-osm-building-history/index.html"),
+        title = "Kigali OSM building history",
+        selfcontained = F
+    )
+```

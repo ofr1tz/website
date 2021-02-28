@@ -6,16 +6,16 @@
     <description>Recent content on Oliver Fritz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.oliverfritz.de/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>History of OSM Building Features in Kigali</title>
-      <link>https://www.oliverfritz.de/portfolio/osm-building-history-kigali/</link>
-      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      <title>Introducing pickPop</title>
+      <link>https://www.oliverfritz.de/portfolio/pickpop/</link>
+      <pubDate>Sat, 27 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.oliverfritz.de/portfolio/osm-building-history-kigali/</guid>
-      <description>(Open Full Page Map)
-Thanks to ohsome API and mapview, very little code is needed to make a web map visualising the evolution of building features in Kigali City on OpenStreetMap (OSM). The httr package provides convenient ways of sending POST requests.
-require(tidyverse)require(sf)require(rnaturalearth)require(geojsonsf)require(httr)require(janitor)require(mapview)require(leaflet)A bounding polygon of Kigali City can be easily acquired from Natural Earth using rnaturalearth. It is converted to GeoJSON format for the ohsome API query with geojsonsf.</description>
+      <guid>https://www.oliverfritz.de/portfolio/pickpop/</guid>
+      <description>(Open Full Page App)
+I recently found out about exactextract (and its R wrapper exactextractR). It is a tool for the extraction of zonal statistics from raster data, and it’s pure magic – it is incredibly fast and more accurate than other algorithms, as it considers partial coverage of pixels by polygons and weights the pixel values accordingly when aggregating them.
+Another interesting tool that I always wanted to try out is plumber, an R package to easily create an API.</description>
     </item>
     
     <item>
