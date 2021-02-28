@@ -15,7 +15,11 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 
-<iframe src = "https://shiny.oliverfritz.de/pickpop" width = "100%" height = "600"><div class="sk-pulse"></div></iframe>
+<div style="position: relative">
+<div class="sk-pulse sk-pos"></div>
+<iframe src = "https://shiny.oliverfritz.de/pickpop" width="100%" height="600" style="position:relative;z-index:2"></iframe>
+</div>
+
 
 <a href="https://shiny.oliverfritz.de/pickpop/" target="_blank">(Open Full Page App)</a>
 
