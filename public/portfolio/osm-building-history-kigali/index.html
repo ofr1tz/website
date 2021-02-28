@@ -114,11 +114,15 @@
 <script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<!-- substitute with weblink-->
-<iframe src="https://maps.oliverfritz.de/kigali-osm-building-history/" width="100%" height="600">
+<div style="position: relative">
+<div class="sk-pulse sk-pos">
+
+</div>
+<iframe src="https://maps.oliverfritz.de/kigali-osm-building-history/" width="100%" height="600" style="position:relative;z-index:2">
 </iframe>
+</div>
 <p><a href="https://maps.oliverfritz.de/kigali-osm-building-history/" target="_blank">(Open Full Page Map)</a></p>
-<p>Thanks to <a href="https://heigit.org/de/big-spatial-data-analytics/ohsome-3/" target="_blank">ohsome API</a> and <a href="https://r-spatial.github.io/mapview/" target="_blank">mapview</a>, very little code is needed to make a web map visualising the evolution of building features in Kigali City on <a href="https://www.openstreetmap.org/relation/1708283#map=12/-1.9296/30.1297" target="_blank">OpenStreetMap</a> (OSM). The <a href="https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html" target="_blank">httr</a> package provides convenient ways of sending POST requests.</p>
+<p>Thanks to <a href="https://heigit.org/de/big-spatial-data-analytics/ohsome-3/" target="_blank">ohsome API</a> and <a href="https://r-spatial.github.io/mapview/" target="_blank">mapview</a>, very little code is needed to make a web map visualising the evolution of building features in Kigali City on <a href="https://www.openstreetmap.org/relation/1708283#map=12/-1.9296/30.1297" target="_blank">OpenStreetMap</a> (OSM).</p>
 <pre class="r"><code>require(tidyverse)
 require(sf)
 require(rnaturalearth)
@@ -131,7 +135,7 @@ require(leaflet)</code></pre>
 <pre class="r"><code>bpoly &lt;- ne_states(country = &quot;Rwanda&quot;, returnclass = &quot;sf&quot;) %&gt;%
     filter(name == &quot;Kigali City&quot;) %&gt;%
     sf_geojson(digits = 5)</code></pre>
-<p>Now a <a href="https://docs.ohsome.org/ohsome-api/v1/endpoints.html#extraction-endpoints" target="_blank">data extraction</a> query for yearly snapshots of building features within the boundaries of Kigali City can be posted to ohsome API.</p>
+<p>Now a <a href="https://docs.ohsome.org/ohsome-api/v1/endpoints.html#extraction-endpoints" target="_blank">data extraction</a> query for yearly snapshots of building features within the boundaries of Kigali City can be posted to ohsome API. The <a href="https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html" target="_blank">httr</a> package allows sending POST requests conventiently.</p>
 <pre class="r"><code>response &lt;- POST(
     url = &quot;https://api.ohsome.org/v1/elements/geometry&quot;,
     encode = &quot;form&quot;,
@@ -141,7 +145,7 @@ require(leaflet)</code></pre>
         time = &quot;2007-12-31/2020-12-31/P1Y&quot;
     )
 )</code></pre>
-<p>And here is the processing chain from the response to the web map: The binary response is converted first to GeoJSON text, then to <a href="https://r-spatial.github.io/sf/articles/sf1.html" target="_blank">simple features</a> format. I decided to retain only building features that still existed in 2020, and selected the chronologically first version of each feature. The result is passed to mapview.</p>
+<p>The API’s binary response is converted first to GeoJSON text, then to <a href="https://r-spatial.github.io/sf/articles/sf1.html" target="_blank">simple features</a> format. I decided to retain only building features that still existed in 2020, and selected the chronologically first version of each feature. The result is passed to mapview.</p>
 <pre class="r"><code>map &lt;- response$content %&gt;%
     rawToChar() %&gt;%
     geojson_sf() %&gt;%
