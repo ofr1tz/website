@@ -155,6 +155,7 @@ require(leaflet)</code></pre>
     filter(any(year == 2020)) %&gt;%
     top_n(-1, wt = year) %&gt;%
     ungroup() %&gt;%
+    # mutate(osm_id = paste0(&#39;&lt;a href=&quot;https:/www.openstreetmap.com/&#39;, osm_id, &#39;&quot; target=&quot;_blank&quot;&gt;&#39;, osm_id, &#39;&lt;/a&gt;&#39;)) %&gt;%
     mapview(
         zcol = &quot;year&quot;, lwd = 0, 
         layer.name = &quot;Feature Creation Year&quot;, 
@@ -170,7 +171,8 @@ require(leaflet)</code></pre>
     mapshot(
         url = here::here(&quot;../maps/kigali-osm-building-history/index.html&quot;),
         title = &quot;Kigali OSM building history&quot;,
-        selfcontained = F
+        selfcontained = F,
+        remove_controls = &quot;layersControl&quot;
     )</code></pre>
 
          
