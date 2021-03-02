@@ -70,7 +70,10 @@ map <- response$content %>%
     filter(any(year == 2020)) %>%
     top_n(-1, wt = year) %>%
     ungroup() %>%
-    # mutate(osm_id = paste0('<a href="https:/www.openstreetmap.com/', osm_id, '" target="_blank">', osm_id, '</a>')) %>%
+    mutate(osm_id = paste0(
+        '<a href="https:/www.openstreetmap.org/', osm_id, 
+        '" target="_blank">', osm_id, '</a>'
+    )) %>%
     mapview(
         zcol = "year", lwd = 0, 
         layer.name = "Feature Creation Year", 
@@ -90,7 +93,6 @@ map@map %>%
     mapshot(
         url = here::here("../maps/kigali-osm-building-history/index.html"),
         title = "Kigali OSM building history",
-        selfcontained = F,
-        remove_controls = "layersControl"
+        selfcontained = F
     )
 ```
