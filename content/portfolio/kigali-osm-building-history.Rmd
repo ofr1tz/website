@@ -71,7 +71,7 @@ map <- response$content %>%
     top_n(-1, wt = year) %>%
     ungroup() %>%
     mutate(osm_id = paste0(
-        '<a href="https:/www.openstreetmap.org/', osm_id, 
+        '<a href="https://www.openstreetmap.org/', osm_id, 
         '" target="_blank">', osm_id, '</a>'
     )) %>%
     mapview(

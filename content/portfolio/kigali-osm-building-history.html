@@ -56,7 +56,7 @@ require(leaflet)</code></pre>
     top_n(-1, wt = year) %&gt;%
     ungroup() %&gt;%
     mutate(osm_id = paste0(
-        &#39;&lt;a href=&quot;https:/www.openstreetmap.org/&#39;, osm_id, 
+        &#39;&lt;a href=&quot;https://www.openstreetmap.org/&#39;, osm_id, 
         &#39;&quot; target=&quot;_blank&quot;&gt;&#39;, osm_id, &#39;&lt;/a&gt;&#39;
     )) %&gt;%
     mapview(
