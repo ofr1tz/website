@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-uk">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Oliver Fritz | Unfolding Europe</title> 
+<meta name="description" content="Spatial Data Science projects">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/owl.carousel.css">
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/owl.theme.css">
+
+<link rel="stylesheet" href="https://www.oliverfritz.de/css/spinkit.min.css">
+
+
+  <link href="https://www.oliverfritz.de/css/style.green.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="https://www.oliverfritz.de/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://www.oliverfritz.de/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    
+    <a href="https://www.oliverfritz.de/"><img src="/img/ofritz.png" width = "200" class="portrait"></a>
+    
+    <h1 class="sidebar-heading"><br><a href="https://www.oliverfritz.de/">Oliver Fritz</a></h1>
+    
+      <p class="sidebar-p">Hi there.</p>
+    
+      <p class="sidebar-p">This website features some little projects in GIS and (spatial) data science.</p>
+    
+    <ul class="sidebar-menu">
+      
+        <li><a href="https://www.oliverfritz.de/portfolio/">Portfolio</a></li>
+      
+        <li><a href="https://www.oliverfritz.de/about/">About</a></li>
+      
+        <li><a href="https://www.oliverfritz.de/contact/">Get in touch</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/ofr1tz" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:website@oliverfritz.de" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/ofr1tz" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2021 Oliver Fritz
+        
+        <br>Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to <a href="https://gohugo.io/">Hugo</a> by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+        <br><br><br>
+        <a href="/impressum/index.html">Impressum (German)</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="https://www.oliverfritz.de/">Oliver Fritz</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>Unfolding Europe</h1>
+         
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
+<link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/proj4/proj4.min.js"></script>
+<script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers/leaflet-providers_1.9.0.js"></script>
+<script src="/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>I like to <a href="www.couchsurfing.com" target="_blank">couchsurfing</a> from time to time. Not only is it a very good way to connect to the place you are visiting, but also to get to know interesting people outside your usual bubble and, thus, to learn new stuff. When I was in Sarajevo in 2019, my wonderful host told me an astonishing thing about Bosnia and Herzegovina:</p>
+<blockquote>
+<p>It seems to be a small country. But if you unfold and flatten it, it’s actually larger than Europe.</p>
+</blockquote>
+<p>I had just come to Sarajevo on a bus from Split in Croatia and I had seen rugged, mountainous landscapes on the way that offered some support for this claim. Nevertheless, I promised myself to have a look into the matter when back from the trip.</p>
+<div class="figure">
+<img src="/img/portfolio/unfolding-europe/sarajevo.png" title="View of Sarajevo from Alifakovac" alt="" />
+<p class="caption">View of Sarajevo from
+Alifakovac</p>
+</div>
+<p>So, let’s unfold and flatten Bosnia and Herzegovina and compare its size with the area of Europe. Unfolding and flattening a country would probably mean to measure its surface area – as opposed to the usual horizontal (or: planar/planimetric) area. There are methods and tools for that task. But before getting out the spatial data science machinery for the analysis, some preliminary questions need to be clarified:</p>
+<ol style="list-style-type: decimal">
+<li>What is Europe?</li>
+</ol>
+<p>That’s an <a href="https://en.wikipedia.org/wiki/Europe#Definition" target="_blank">old question</a>. For pragmatic reasons, I will use <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem" target="_blank">EU-DEM elevation data</a> for the analysis and define Europe in this context as all countries (almost) entirely covered by this data set. This excludes Russia, Ukraine, Belarus and others, but includes all of Turkey.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>What is the <strong>area</strong> of Europe that will be compared to the surface area of Bosnia and Herzegovina?</li>
+</ol>
+<p>There are other countries in Europe that have much to gain in surface area – think of Switzerland! And, first and foremost, Bosnia and Herzegovina is a part of Europe. By definition, it cannot be larger than Europe. The original claim is obviously about the <strong>surface</strong> area of Bosnia and Herzegovina being larger than the <strong>horizontal</strong> area of Europe. This means, we will be comparing apples and pears.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>At what level of detail will the surface area be calculated?</li>
+</ol>
+<p>Just as <a href="https://en.wikipedia.org/wiki/Coastline_paradox" target="_blank">the length of a coastline</a>, the surface area can never be well-defined. The calculated value of the surface area depends largely on the measurement resolution. I will use EU-DEM elevation data with a ground resolution of 25 m – because it is readily available for a Europe-wide analysis. Using more fine-grained data would probably result in larger values for the surface area.</p>
+<p>I’ll use R with the <a href="https://CRAN.R-project.org/package=raster" target="_blank"><em>raster</em></a> and <a href="https://doi.org/10.32614/RJ-2018-009" target="_blank"><em>sf</em></a> packages for spatial data processing, <a href="https://CRAN.R-project.org/package=leaflet" target="_blank"><em>leaflet</em></a> for an interactive visualisation of the slope dataset, and <a href="https://CRAN.R-project.org/package=exactextractr" target="_blank"><em>exactextractr</em></a> for the extraction of aggregated values with a custom function to calculate the surface area. With <a href="https://CRAN.R-project.org/package=rmapshaper" target="_blank"><em>rmapshaper</em></a>, <a href="https://CRAN.R-project.org/package=cartogram" target="_blank"><em>cartogram</em></a> and <a href="https://CRAN.R-project.org/package=gganimate" target="_blank"><em>gganimate</em></a>, I’ll be able to visualise the effect of unfolding Europe.</p>
+<pre class="r"><code>require(tidyverse)
+require(here)
+require(glue)
+require(raster)
+require(sf)
+require(mapview)
+require(leaflet)
+require(exactextractr)
+require(DT)
+require(gghighlight)
+require(rmapshaper)
+require(cartogram)
+require(scales)
+require(RColorBrewer)
+require(gganimate)
+
+require(conflicted)
+conflict_prefer(&quot;filter&quot;, &quot;dplyr&quot;)
+conflict_prefer(&quot;select&quot;, &quot;dplyr&quot;)
+conflict_prefer(&quot;animate&quot;, &quot;gganimate&quot;)</code></pre>
+<p>First of all, I acquire <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1-0-and-derived-products/slope?tab=download" target="_blank">EU-DEM v1.0 slope data</a>. The data set is available in a Lambert Equal-Area projection and split into 23 tiles:</p>
+<pre class="r"><code>wms &lt;- &quot;https://image.discomap.eea.europa.eu/arcgis/services/Elevation/Slope/MapServer/WmsServer?&quot;
+
+leaflet() %&gt;% 
+    addProviderTiles(providers$CartoDB.Positron) %&gt;%
+    addWMSTiles(
+        wms,
+        layers = &quot;Image,Boundary,Downloads&quot;,
+        options = WMSTileOptions(format = &quot;image/png&quot;, transparent = T),
+        attribution = &quot;European Environment Agency (EEA)&quot;
+    ) %&gt;% 
+    setView(10, 55, zoom = 2)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addWMSTiles","args":["https://image.discomap.eea.europa.eu/arcgis/services/Elevation/Slope/MapServer/WmsServer?",null,null,{"styles":"","format":"image/png","transparent":true,"version":"1.1.1","attribution":"European Environment Agency (EEA)","layers":"Image,Boundary,Downloads"}]}],"setView":[[55,10],2,[]]},"evals":[],"jsHooks":[]}</script>
+<p>You have to login to get access to the tiles. I manually downloaded all the files, unzipped them and saved all the geotiffs into one folder. From there, I can access them with the raster function. I set zero as the NA value to avoid problems with the island of Jan Mayen – which is not covered by the EU-DEM data, but part of the Norwegian county of Nordland in the Natural Earth admin 1 boundary data.</p>
+<pre class="r"><code>eudem_slope &lt;- here(&quot;../../data/eudem/slope/&quot;) %&gt;%
+    list.files(full.names = T, pattern = &quot;tif$&quot;) %&gt;%
+    map(raster)
+
+for(i in 1:length(eudem_slope)) NAvalue(eudem_slope[[i]]) &lt;- 0 # Jan Mayen/Nordland
+
+st_envelope &lt;- function(r) st_as_sfc(st_bbox(r))  
+
+envelope &lt;- eudem_slope %&gt;% 
+    map(st_envelope) %&gt;%
+    reduce(st_union)</code></pre>
+<p>I want to know the surface area of European countries, but in the cartogram visualisation, I prefer to use even smaller geographical units for more detail. So, I’ll be using <a href="https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces_lakes.zip" target="_blank">admin 1 boundaries from Natural Earth</a> at a 1:10m scale to extract aggregated area values. Caveat: These boundary polygons are already quite generalised (e.g. very small islands are missing), so the extracted area values will be somewhat distorted.</p>
+<p>I first use a spatial filter to retain only polygons that are entirely within the slope raster tiles. Then I explicitly remove sub-national units of a number of countries that are not covered by EU-DEM data.</p>
+<pre class="r"><code>ne &lt;- &quot;ne_10m_admin_1_states_provinces_lakes&quot;
+
+exclude &lt;- c(
+    &quot;ARM&quot;, &quot;AZE&quot;, &quot;BLR&quot;, &quot;DZA&quot;, &quot;EGY&quot;, &quot;GEO&quot;, &quot;IRN&quot;, &quot;IRQ&quot;, &quot;ISR&quot;, &quot;JOR&quot;,
+    &quot;LBN&quot;, &quot;LBY&quot;, &quot;MAR&quot;, &quot;MDA&quot;, &quot;RUS&quot;, &quot;SYR&quot;, &quot;TUN&quot;, &quot;UKR&quot;
+)
+
+adm1 &lt;- here(glue(&quot;../../data/natural_earth/{ne}/{ne}.shp&quot;)) %&gt;%
+    read_sf() %&gt;%
+    st_transform(st_crs(envelope)) %&gt;%
+    st_filter(envelope, .predicate = st_within) %&gt;%
+    filter(!(sov_a3 %in% exclude))</code></pre>
+<p>Probably the simplest way to calculate surface area is to divide the planar area by the cosine of the slope angle. This is – compared to <a href="https://www.researchgate.net/publication/326700611_Slope-Adjusted_Surface_Area_Computations_in_Digital_Terrain" target="_blank">other methods</a> – a rather approximate way, but it scales well and will be good enough for this particular purpose:</p>
+<p><span class="math inline">\(\text{surface area} = \frac{\text{planar area}}{\cos{slope}}\)</span></p>
+<p>When looking into the <a href="https://land.copernicus.eu/user-corner/technical-library/slope-conversion-table">conversion table</a> provided with the slope data, there is the pleasant discovery that its DN is actually already encoded as cosine of the slope (times 250):</p>
+<p><code>slope[degrees] = float(acos(DN/250)*180/!PI)</code></p>
+<p>This makes it even easier for us! The following function can be used by <em>exactextractr</em> to aggregate the horizontal and surface area from the EU-DEM slope data accordingly:</p>
+<pre class="r"><code>eudem_slope_to_area &lt;- function(slope, coverage_fraction, res = 25, ...) { 
+    
+    data.frame(
+        horizontal = sum(coverage_fraction * res^2, na.rm = T), 
+        surface = sum((coverage_fraction * res^2) / (slope/250), na.rm = T)
+    )
+}</code></pre>
+<p>The following processing chain extracts aggregated values from all 23 raster tiles for the boundary polygons, summarises the data on the admin 1 units and calculates a ratio of the surface to the horizontal area:</p>
+<pre class="r"><code>extract_surface_area &lt;- function(x, y) {
+    
+    y &lt;- st_filter(y, st_as_sfc(st_bbox(x)))
+    exact_extract(x, y, eudem_slope_to_area, append_cols = &quot;adm1_code&quot;, progress = F)
+}
+
+surface_area &lt;- eudem_slope %&gt;%
+    map(extract_surface_area, adm1) %&gt;%
+    reduce(rbind) %&gt;%
+    filter(surface &gt; 0) %&gt;%
+    group_by(adm1_code) %&gt;%
+    summarise(
+        horizontal = sum(horizontal), 
+        surface = sum(surface), 
+        ratio = surface/horizontal
+    ) %&gt;%
+    left_join(adm1) %&gt;%
+    st_sf()</code></pre>
+<p>Let’s have a look on the results of the calculation. Here are all the sub-national geographical units with their horizontal and surface area, ordered by excess area – the percentage difference of surface and horizontal area:</p>
+<pre class="r"><code>dt &lt;- surface_area %&gt;% 
+    transmute(
+        name, admin, 
+        horizontal_sqkm = horizontal/1e6, surface_sqkm = surface/1e6, 
+        excess = ratio-1
+    ) %&gt;%
+    st_drop_geometry() %&gt;%
+    arrange(desc(excess)) %&gt;%
+    datatable(
+        colnames = c(
+            &quot;Admin Name&quot;, &quot;Country&quot;, 
+            &quot;Horizontal Area (sqkm)&quot;, &quot;Surface Area (sqkm)&quot;, &quot;Excess Area&quot;
+        ),
+        filter = &quot;top&quot;
+    ) %&gt;%
+    formatRound(3:4, digits = 2) %&gt;%
+    formatPercentage(5, digits = 4)
+
+widgetframe::frameWidget(dt, height = &quot;680&quot;)</code></pre>
+<div id="htmlwidget-2" style="width:100%;height:680px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"url":"/portfolio/unfolding-europe_files/figure-html//widgets/widget_table.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p>I thought it would be a clever idea to use a cartogram to visualise the surface area. In an equal-area map, the area of objects on the map is proportional to the area of the objects in reality. In a cartogram, however, the area of objects on the map is used to encode other variables such as population. It seems thus very fitting to use area on the map to encode surface area.</p>
+<p>I use the <em>cartogram</em> package to create new geometries for the admin 1 boundary polygons. The proportions of the areas of the new geometries will correspond to their surface areas:</p>
+<pre class="r"><code>simplified &lt;- surface_area %&gt;% 
+    ms_simplify() %&gt;%
+    mutate(adm1_code, surface, ratio)
+
+cartogram_sf &lt;- simplified %&gt;%
+    mutate(type = &quot;Horizontal Area&quot;) %&gt;%
+    rbind(
+       simplified %&gt;%
+            mutate(type = &quot;Surface Area&quot;) %&gt;%
+            cartogram_cont(&quot;surface&quot;, itermax = 25)
+    )</code></pre>
+<p>In order to show the difference between horizontal and surface area, <em>gganimate</em> can be used to make an animation with smooth transitions between the map and the cartogram:</p>
+<pre class="r"><code>colours &lt;- brewer.pal(7, &quot;YlOrBr&quot;)[2:7]
+
+labels &lt;- c(
+    &quot; 0 \U2012  &lt;1&quot;,
+    &quot; 1 \U2012  &lt;2&quot;,
+    &quot; 2 \U2012  &lt;4&quot;,
+    &quot; 4 \U2012  &lt;8&quot;,
+    &quot; 8 \U2012 &lt;16&quot;,
+    &quot;16 \U2012  23&quot;
+)    
+
+animation &lt;- cartogram_sf %&gt;%
+    mutate(bin = cut(ratio-1, breaks = c(0, 0.01, 0.02, 0.04, 0.08, 0.16, 0.32))) %&gt;%
+    ggplot() +
+    geom_sf(aes(fill = bin, group = adm1_code), size = 0, color = NA) +
+    scale_fill_manual(name = &quot;% Excess Area&quot;, values = colours, labels = labels) +
+    labs(title = &quot;{closest_state}&quot;) +
+    theme_minimal() +
+    theme(
+        text = element_text(family = &quot;mono&quot;),
+        legend.position = c(0.85, 0.7),
+        legend.title = element_text(size = rel(1.3)),
+        legend.text = element_text(size = rel(1.3)), 
+        legend.text.align = 1,
+        plot.title.position = &quot;plot&quot;,
+        plot.title = element_text(face = &quot;bold&quot;, size = rel(1.3), hjust = .5)
+    ) +
+    transition_states(type) + 
+    ease_aes(&quot;cubic-in-out&quot;)
+    
+
+gif &lt;- here(&quot;static/img/portfolio/unfolding-europe/unfolding-europe.gif&quot;)
+
+animation %&gt;% animate(
+    duration = 5, start_pause = 0, end_pause = 15, 
+    device = &quot;ragg_png&quot;, renderer = gifski_renderer(file = gif), 
+    width = 800, height = 600, unit = &quot;px&quot;
+)</code></pre>
+<p><img src="/portfolio/unfolding-europe_files/figure-html/animation-1.gif" /><!-- --></p>
+<p>Can you see it? Horizontal and surface area are not that radically different from each other as the original claim of Bosnia and Herzegovina’s hidden size would suggest – you have to look very closely to actually notice the change.</p>
+<p>So what about Bosnia and Herzegovina after all? Let’s have a look at the surface area of countries:</p>
+<pre class="r"><code>by_country &lt;- surface_area %&gt;% 
+    group_by(admin) %&gt;%
+    summarise(
+        horizontal = sum(horizontal),
+        surface = sum(surface), 
+        excess = (surface/horizontal)-1,
+    )</code></pre>
+<p>Bosnia and Herzegovina has – according to this analysis with all its inherent limitations – a <strong>surface</strong> area of 53,557.52 sqkm. This corresponds to
+0.9% of the total <strong>horizontal</strong> area of all the European countries in the data set. In conclusion, the analysis does not support the claim that Bosnia and Herzegovina would be larger than Europe if flattened out.</p>
+<p>After all, it ranks as number 14 out of 51 countries regarding the excess area. Quite as expected, Switzerland is the territorial state in Europe that proportionally gains the most by unfolding its area:</p>
+<pre class="r"><code>by_country %&gt;%
+    ggplot(aes(y = reorder(admin, excess), x = excess)) +
+    geom_col(fill = &quot;firebrick&quot;) +
+    scale_x_continuous(labels = label_percent(accuracy = 1)) +
+    labs(x = &quot;Excess area&quot;, y = NULL) +
+    gghighlight::gghighlight(admin == &quot;Bosnia and Herzegovina&quot;) +
+    theme_minimal()</code></pre>
+<p><img src="/portfolio/unfolding-europe_files/figure-html/barplot-1.png" width="100%" /></p>
+
+         
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="https://www.oliverfritz.de/js/jquery.min.js"></script>
+<script src="https://www.oliverfritz.de/js/bootstrap.min.js"></script>
+<script src="https://www.oliverfritz.de/js/jquery.cookie.js"> </script>
+<script src="https://www.oliverfritz.de/js/ekko-lightbox.js"></script>
+<script src="https://www.oliverfritz.de/js/jquery.scrollTo.min.js"></script>
+<script src="https://www.oliverfritz.de/js/masonry.pkgd.min.js"></script>
+<script src="https://www.oliverfritz.de/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://www.oliverfritz.de/js/owl.carousel.min.js"></script>
+<script src="https://www.oliverfritz.de/js/front.js"></script>
+
+
+<script src="https://www.oliverfritz.de/js/math-code.js"></script>
+<script async src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
