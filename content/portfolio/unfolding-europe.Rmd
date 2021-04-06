@@ -137,7 +137,7 @@ eudem_slope_to_area <- function(slope, coverage_fraction, res = 25, ...) {
 
 The following processing chain extracts aggregated values from all 23 raster tiles for the boundary polygons, summarises the data on the admin 1 units and calculates a ratio of the surface to the horizontal area:
 
-```{r extract, cache = T}
+```{r extract, cache=T}
 extract_surface_area <- function(x, y) {
     y <- st_filter(y, st_as_sfc(st_bbox(x)))
     exact_extract(x, y, eudem_slope_to_area, append_cols = "adm1_code", progress = F)
@@ -185,7 +185,7 @@ I thought it would be a clever idea to use a cartogram to visualise the surface 
 
 I use the *cartogram* package to create new geometries for the admin 1 boundary polygons. The proportions of the areas of the new geometries will correspond to their surface areas:
 
-```{r cartogram, cache = T}
+```{r cartogram, cache=T}
 simplified <- surface_area %>% 
     ms_simplify() %>%
     mutate(adm1_code, surface, ratio)
@@ -201,7 +201,7 @@ cartogram_sf <- simplified %>%
 
 In order to show the difference between horizontal and surface area, *gganimate* can be used to make an animation with smooth transitions between the map and the cartogram:
 
-```{r animation, cache = T}
+```{r animation, out.width='100%', cache=T}
 
 colours <- brewer.pal(7, "YlOrBr")[2:7]
 
@@ -262,7 +262,7 @@ Bosnia and Herzegovina has -- according to this analysis with all its inherent l
 
 After all, it ranks as number 14 out of 51 countries regarding the excess area. Quite as expected, Switzerland is the territorial state in Europe that proportionally gains the most by unfolding its area:
 
-```{r barplot, dev="svg", out.width='100%', fig.asp=1.3}
+```{r barplot, dev="svg", out.width='100%', fig.asp=1.2}
 by_country %>%
     ggplot(aes(y = reorder(admin, excess), x = excess)) +
     geom_col(fill = "firebrick") +
