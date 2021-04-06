@@ -9,7 +9,7 @@ weight: 1
 Description: Can one small country be larger than Europe when flattening all its mountains?
 ---
 
-I like to [couchsurfing](www.couchsurfing.com){target="_blank"} from time to time. Not only is it a very good way to connect to the place you are visiting, but also to get to know interesting people outside your usual bubble and, thus, to learn new stuff. When I was in Sarajevo in 2019, my wonderful host told me an astonishing thing about Bosnia and Herzegovina: 
+I like [couchsurfing](www.couchsurfing.com){target="_blank"} from time to time. Not only is it a very good way to connect to the place you are visiting, but also to get to know interesting people outside your usual bubble and, thus, to learn new stuff. When I was in Sarajevo in 2019, my wonderful host told me an astonishing thing about Bosnia and Herzegovina: 
 
 > It seems to be a small country. But if you unfold and flatten it, it's actually larger than Europe.
 
