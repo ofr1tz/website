@@ -1,4 +1,15 @@
+<!-- original:
 <script src="{{ "js/jquery.min.js" | absURL }}"></script>
+
+customisation: conditionally load jquery (based on blog post yaml parameter) 
+exclude jquery for blog posts with datatable output in order to avoid version conflicts
+see: https://bookdown.org/yihui/blogdown/html-widgets.html
+-->
+{{ if not .Params.exclude_jquery}}
+<script src="{{ "js/jquery.min.js" | absURL }}"></script>
+{{ end }}
+
+
 <script src="{{ "js/bootstrap.min.js" | absURL }}"></script>
 <script src="{{ "js/jquery.cookie.js" | absURL }}"> </script>
 <script src="{{ "js/ekko-lightbox.js" | absURL }}"></script>
