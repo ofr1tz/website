@@ -1,7 +1,7 @@
 ---
 title: Berlin Industrial Expo 1896
 author: Oliver Fritz
-date: '2020-07-17'
+date: '2021-07-17'
 draft: no
 slug: berlin-industrial-exposition-1896
 image: img/portfolio/berlin-industrial-exposition-1896/berlin-industrial-exposition-1896.png
