@@ -36,8 +36,8 @@ shady trees, extensive meadows, a romantic little
 the 
 [*Island of Youth*](https://de.wikipedia.org/wiki/Insel_der_Jugend){target="_blank"}
 (with one of my favorite beer gardens and a canoe rental), but also the truly monumental 
-[Soviet War Memorial](https://en.wikipedia.org/wiki/Soviet_War_Memorial_(Treptower_Park)){target="_blank"}
-, commemorating Red Army soldiers fallen in the Battle of Berlin in 1945.
+[Soviet War Memorial](https://en.wikipedia.org/wiki/Soviet_War_Memorial_(Treptower_Park)){target="_blank"}, 
+commemorating Red Army soldiers fallen in the Battle of Berlin in 1945.
 
 What is now the park, was the grounds of the great expo in 1896. The map shows 
 lots of infrastructure, many large building structures and ensembles of smaller
@@ -54,10 +54,10 @@ which is clearly build on the footprint of what once was the artificial New
 Lake ("Neuer See").
 
 I was glad to find 
-[this map at Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Berliner_Gewerbeausstellung_1896_02.jpg){target="_blank"}. I georeferenced it and made a little interactive
-webmap of it using 
-[react-geo](https://terrestris.github.io/react-geo/){target="_blank"}
-. As the map is not north-oriented, I used 
+[this map at Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Berliner_Gewerbeausstellung_1896_02.jpg){target="_blank"}. 
+I georeferenced it and made a little interactive webmap of it using 
+[react-geo](https://terrestris.github.io/react-geo/){target="_blank"}. 
+As the map is not north-oriented, I used 
 [OpenLayer's rotation controls](https://openlayers.org/en/latest/apidoc/module-ol_control_Rotate.html){target="_blank"} 
 to create a button that lets you switch to the original orientation of the map 
 and back. Using the opacity controls, you can discover the remaining traces
