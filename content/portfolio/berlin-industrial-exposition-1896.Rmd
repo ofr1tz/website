@@ -1,0 +1,64 @@
+---
+title: Berlin Industrial Expo 1896
+author: Oliver Fritz
+date: '2020-07-17'
+draft: no
+slug: berlin-industrial-exposition-1896
+image: img/portfolio/berlin-industrial-exposition-1896/berlin-industrial-exposition-1896.png
+showonlyimage: no
+weight: 1
+Description: Find the traces of an "impeded world fair" in today's Treptow Park, Berlin
+---
+
+<div class="iframe-container">
+<div class="sk-pulse sk-pos"></div>
+<iframe title = "Berlin Industrial Expo 1896" src = "https://maps.oliverfritz.de/berlin-industrial-exposition-1896/"></iframe>
+</div>
+
+<a href="https://maps.oliverfritz.de/berlin-industrial-exposition-1896/" target="_blank">(Open Full Page Map)</a>
+
+A while a go, I went on an urban architecture tour with 
+[Ticket B](https://ticket-b.de/en/){target="_blank"} (highly recommended!)
+to the 
+[Rummelsburg Bay](https://ticket-b.de/en/tour/rummelsburg/){target="_blank"}. 
+Though not exactly within the scope of the tour, the guide showed a map of
+the 
+[Berlin Industrial Exposition of 1896](https://en.wikipedia.org/wiki/Great_Industrial_Exposition_of_Berlin){target="_blank"}
+at the starting point of the tour, 
+[Treptow Park](https://en.wikipedia.org/wiki/Berlin_Treptower_Park_station){target="_blank"} station.
+
+Now that map fascinated me for different reasons. I am very familiar with the
+Treptow park, where you'll find me running several times per week all year
+round. It's a very nice park, with access to river 
+[Spree](https://en.wikipedia.org/wiki/Spree){target="_blank"}, many old
+shady trees, extensive meadows, a romantic little 
+[lake](https://de.wikipedia.org/wiki/Karpfenteich_(Berlin)){target="_blank"}, 
+the 
+[*Island of Youth*](https://de.wikipedia.org/wiki/Insel_der_Jugend){target="_blank"}
+(with one of my favorite beer gardens and a canoe rental), but also the truly monumental 
+[Soviet War Memorial](https://en.wikipedia.org/wiki/Soviet_War_Memorial_(Treptower_Park)){target="_blank"}
+, commemorating Red Army soldiers fallen in the Battle of Berlin in 1945.
+
+What is now the park, was the grounds of the great expo in 1896. The map shows 
+lots of infrastructure, many large building structures and ensembles of smaller
+buildings, e.g. replicas of the Spandau Old City and of villages in Cameroon, 
+Togo and New Guinea -- as the infamous 
+[German Colonial Exhhibition](https://blackcentraleurope.com/sources/1850-1914/the-first-german-colonial-exhibition-1896/){target="_blank"} was a part of the expo.
+
+Walking (or running) under the shade of the park's trees today, you would not 
+expect this place to have been host to all that.  Apart from the
+[Archenhold Observatory](https://en.wikipedia.org/wiki/Archenhold_Observatory){target="_blank"},
+hardly anything of it still exists. But traces of it can still be seen in the 
+structure of the park. This applies most of all for the Soviet War Memorial, 
+which is clearly build on the footprint of what once was the artificial New
+Lake ("Neuer See").
+
+I was glad to find 
+[this map at Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Berliner_Gewerbeausstellung_1896_02.jpg){target="_blank"}. I georeferenced it and made a little interactive
+webmap of it using 
+[react-geo](https://terrestris.github.io/react-geo/){target="_blank"}
+. As the map is not north-oriented, I used 
+[OpenLayer's rotation controls](https://openlayers.org/en/latest/apidoc/module-ol_control_Rotate.html){target="_blank"} 
+to create a button that lets you switch to the original orientation of the map 
+and back. Using the opacity controls, you can discover the remaining traces
+of the great expo in the design of today's park.
