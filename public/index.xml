@@ -68,5 +68,16 @@ I found this beautifully simple 1994 map of Kigali at the Perry-Castañeda Libra
 The website needs a nice “Hello, World!” article and a favicon. So why not combine both! As this here will be all about spatial data science and geovisualisation, I figured it would be rather fitting to use a map-themed icon and to create it in a reproducible way with R.</description>
     </item>
     
+    <item>
+      <title>Berlin Industrial Expo 1896</title>
+      <link>https://www.oliverfritz.de/portfolio/berlin-industrial-exposition-1896/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.oliverfritz.de/portfolio/berlin-industrial-exposition-1896/</guid>
+      <description>(Open Full Page Map)
+A while a go, I went on an urban architecture tour withTicket B (highly recommended!)to theRummelsburg Bay.Though not exactly within the scope of the tour, the guide showed a map oftheBerlin Industrial Exposition of 1896at the starting point of the tour,Treptow Park station.
+Now that map fascinated me for different reasons. I am very familiar with theTreptow park, where you’ll find me running several times per week all yearround.</description>
+    </item>
+    
   </channel>
 </rss>

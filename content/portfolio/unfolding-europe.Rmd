@@ -243,7 +243,7 @@ animation %>% animate(
 )
 ```
 
-Can you see it? Horizontal and surface area are not that radically different from each other as the original claim of Bosnia and Herzegovina's hidden size would suggest -- you have to look very closely to actually notice the change. 
+Can you see it? Horizontal and surface area are not as radically different from each other as the original claim of Bosnia and Herzegovina's hidden size would suggest -- you have to look very closely to actually notice the change. 
 
 So what about Bosnia and Herzegovina after all? Let's have a look at the surface area of countries:
 
